@@ -231,3 +231,25 @@ function botReply(text) {
 
   addMessage(answer, "bot");
 }
+
+// المودال
+const modal = document.getElementById("modal");
+const closeModal = document.getElementById("closeModal");
+
+// اغلاق عند الضغط على زر ×
+closeModal.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+// اغلاق عند الضغط خارج المودال (على الخلفية)
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
+// اغلاق المودال بزر Escape
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    modal.style.display = "none";
+  }
+});
