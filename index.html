@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>بلدنا اخضر - محافظة الجيزة</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <img src="images/logo-giza.png" alt="شعار الجيزة" class="logo">
+        <div>
+          <h1>بلدنا اخضر - محافظة الجيزة</h1>
+          <p class="muted">مشروعات طاقة مستدامة، تعليم وتقنيات موفرة</p>
+        </div>
+      </div>
+
+      <nav class="main-nav">
+        <a href="#projects">المشروعات</a>
+        <a href="#calculators">الآلات الحاسبة</a>
+        <a href="#timeline">الخط الزمني</a>
+        <a href="#stats">الإحصائيات</a>
+        <a href="#about">عن المشروع</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <h2>حلول كهربائية خضراء لمجتمع مستدام</h2>
+        <p class="muted">موقع تفاعلي يعرض مشروعات الطاقة الخضراء في الجيزة، أدوات تعليمية، وآلات حاسبة عملية للطلبة.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn primary">استعرض المشروعات</a>
+          <a href="#calculators" class="btn ghost">جرب الحاسبات</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="images/solar-panel.jpg" alt="طاقة شمسية">
+      </div>
+    </section>
+
+<!-- Chatbot -->
+<div id="chatbot">
+  <div id="chat-header">💬 اسأل عن المشاريع</div>
+  <div id="chat-body"></div>
+  <div id="chat-input">
+    <input type="text" id="chatText" placeholder="اكتب سؤالك هنا..." />
+    <button id="sendBtn">إرسال</button>
+  </div>
+</div>
+<div id="chat-icon">💬</div>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <h3>مشروعات قطاع الكهرباء والتقنيات الخضراء</h3>
+      <p class="muted">اضغط على أي بطاقة لعرض التفاصيل. استخدم الفلاتر أو البحث للعثور على مشروع.</p>
+      <div id="projectsGrid" class="grid" aria-live="polite"></div>
+    </section>
+
+    <!-- CALCULATORS -->
+    <section id="calculators" class="section">
+      <h3>الآلات الحاسبة الكهربائية</h3>
+      <div class="cards-grid">
+        <div class="card">
+          <h4>1. تحويل فولت + تيار → قدرة (W)</h4>
+          <div class="form-row">
+            <label>الجهد (V)</label>
+            <input id="v_to_p_v" type="number" placeholder="مثال: 230">
+          </div>
+          <div class="form-row">
+            <label>التيار (A)</label>
+            <input id="v_to_p_i" type="number" placeholder="مثال: 2">
+          </div>
+          <button class="btn primary" id="calc_v_to_p">احسب القدرة (W)</button>
+          <div class="result" id="res_v_to_p"></div>
+          <small class="muted">P = V × I</small>
+        </div>
+
+        <div class="card">
+          <h4>2. تحويل فولت + مقاومة → تيار (A)</h4>
+          <div class="form-row">
+            <label>الجهد (V)</label>
+            <input id="v_to_i_v" type="number" placeholder="مثال: 230">
+          </div>
+          <div class="form-row">
+            <label>المقاومة (Ω)</label>
+            <input id="v_to_i_r" type="number" placeholder="مثال: 115">
+          </div>
+          <button class="btn primary" id="calc_v_to_i">احسب التيار (A)</button>
+          <div class="result" id="res_v_to_i"></div>
+          <small class="muted">I = V / R</small>
+        </div>
+
+        <div class="card">
+          <h4>3. حاسبة استهلاك الطاقة وتكلفة الكهرباء</h4>
+          <div class="form-row">
+            <label>القدرة بالواط (W)</label>
+            <input id="cons_p" type="number" placeholder="مثال: 100">
+          </div>
+          <div class="form-row">
+            <label>ساعات تشغيل يومية</label>
+            <input id="cons_h" type="number" placeholder="مثال: 5">
+          </div>
+          <div class="form-row">
+            <label>سعر الكيلووات/ساعة (جنيه)</label>
+            <input id="cons_price" type="number" placeholder="مثال: 1.2">
+          </div>
+          <button class="btn primary" id="calc_consume">احسب التكلفة الشهرية</button>
+          <div class="result" id="res_consume"></div>
+          <small class="muted">الاستهلاك الشهري = (W × ساعات × 30) / 1000 (kWh)</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section id="timeline" class="section">
+      <h3>الخط الزمني — سنوات التنفيذ</h3>
+      <div class="timeline-wrap">
+        <div id="timelineList" class="timeline-list" aria-hidden="false"></div>
+        <div id="timelineProjects" class="grid timeline-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section id="stats" class="section">
+      <h3>الإحصائيات الرئيسية</h3>
+      <div class="stats-container">
+        <div class="stat-card">
+          <h3 id="stat_total">0</h3>
+          <p>مشروع مُسجّل</p>
+        </div>
+        <div class="stat-card">
+          <h3 id="stat_solar">0</h3>
+          <p>مشروعات شمسية</p>
+        </div>
+        <div class="stat-card">
+          <h3 id="stat_eff">0</h3>
+          <p>مشروعات كفاءة</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <h3>عن المشروع</h3>
+      <p class="muted">هذا المشروع مُعد خصيصاً لمسابقة "التكنولوجيا الخضراء" — يهدف لتقديم حلول تعليمية وعملية مرتبطة بالطاقة المستدامة في محافظة الجيزة.</p>
+    </section>
+  </main>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button id="closeModal" class="modal-close" title="إغلاق">×</button>
+      <img id="modalImg" src="images/default.jpg" alt="">
+      <h4 id="modalTitle">عنوان المشروع</h4>
+      <p id="modalDesc"></p>
+      <p class="muted"><i class="fa fa-calendar"></i> <span id="modalYear"></span> — <i class="fa fa-map-marker-alt"></i> <span id="modalLocation"></span></p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="muted">© <span id="year"></span>بلدنا اخضر - محافظة الجيزة</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
